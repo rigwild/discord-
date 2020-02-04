@@ -37,7 +37,7 @@ export default Vue.extend({
     }
   },
   mounted() {
-    this.webSocket = new WebSocket('ws://localhost:8080')
+    this.webSocket = new WebSocket(`ws://${location.host}`)
     this.webSocket.onmessage = event => this.decryptThenAddToHistory(event.data)
   },
   computed: {
