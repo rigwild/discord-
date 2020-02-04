@@ -12,7 +12,9 @@
   "dependencies": {
     "crypto-js": "^3.1.9-1",
     "discord.js": "^11.5.1",
-    "esm": "^3.2.25"
+    "dotenv-safe": "^8.2.0",
+    "esm": "^3.2.25",
+    "ws": "^7.2.1"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.1.1",
