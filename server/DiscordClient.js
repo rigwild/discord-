@@ -19,10 +19,15 @@ export class DiscordClient {
         if (message.channel.id !== discordChannelId) return
 
         // Check if own message
-        if (message.author.id === this.discordClient.user.id) return
+        // Commented to show metadata on client
+        // if (message.author.id === this.discordClient.user.id) return
 
         // Send new message to WebSocket clients
-        WebSocketServer.cryptThenBroadcastMessage(message.content)
+        // Message timestamp is calculted on the client (timezone hell)
+        const sentMessage = message.member.nickname
+          ? `${message.member.nickname} (${message.author.tag}): ${message.content}`
+          : `${message.author.tag}: ${message.content}`
+        WebSocketServer.cryptThenBroadcastMessage(sentMessage)
       })
 
       this.discordClient.login(discordToken)
@@ -38,8 +43,7 @@ export class DiscordClient {
 
     const channel = this.discordClient.channels.get(discordChannelId)
 
-    if (!channel)
-      throw new Error(`Channel ID=${discordChannelId} was not found.`)
+    if (!channel) throw new Error(`Channel ID=${discordChannelId} was not found.`)
 
     if (!(channel instanceof Discord.TextChannel))
       throw new Error(`Channel ID=${discordChannelId} is not a text channel.`)

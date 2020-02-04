@@ -1,21 +1,16 @@
+import { startHttpServer, httpServer } from './httpServer'
 import WebSocketServer from './WebSocketServer'
 import DiscordClient from './DiscordClient'
-import { serverPort, secret } from './config'
-import { crypt } from '../utils'
+import { serverPort } from './config'
 
 const start = async () => {
-  try {
-    await Promise.all([
-      WebSocketServer.start().then(() => console.log(`WebSocket server is listening on port ${serverPort}.`)),
-      DiscordClient.start().then(() => console.log('Discord client was started.'))
-    ])
-  }
-  catch (error) {
-    console.error('zuijhfuyzehfuhyzekuyfghazeyuhfgezyuk')
-    console.error(error)
-  }
+  await startHttpServer()
+  console.log(`HTTP server is listening on http://localhost:${serverPort}.`)
 
-  console.log(crypt('hello', secret))
+  await Promise.all([
+    WebSocketServer.start(httpServer).then(() => console.log(`WebSocket server is listening on port ${serverPort}.`)),
+    DiscordClient.start().then(() => console.log('Discord client was started.'))
+  ])
 }
 
 start()
