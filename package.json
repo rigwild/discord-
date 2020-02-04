@@ -1,11 +1,14 @@
 {
   "name": "discord-client-crypted-microservice",
   "description": "A microservice to chat on Discord using client-side encryption (makes MITM SSL proxies useless)",
+  "private": true,
   "version": "0.1.0",
+  "main": "server/index.js",
+  "module": "server/index.js",
   "scripts": {
-    "server:start": "node server/esmEntryPoint.js",
-    "client:dev": "npx parcel public/index.html",
-    "client:build": "npx parcel build public/index.html"
+    "server:start": "node -r esm server/index.js",
+    "client:dev": "parcel public/index.html",
+    "client:build": "parcel build public/index.html"
   },
   "author": "rigwild <me@rigwild.dev>",
   "license": "MIT",
@@ -18,10 +21,6 @@
     "ws": "^7.2.1"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^3.1.1",
-    "parcel-bundler": "^1.12.4",
-    "vue": "^2.6.11",
-    "vue-hot-reload-api": "^2.3.4",
-    "vue-template-compiler": "^2.6.11"
+    "vue": "^2.6.11"
   }
 }

@@ -8,10 +8,23 @@ cd discord-client-crypted-microservice
 yarn
 ```
 
+## Release build
+You can find a version with the front-end already built at the [Releases page](https://github.com/rigwild/discord-client-crypted-microservice/releases).
+
+Keep in mind you still need to [install dependencies](#install).
+
 ## Build
+You need [Parcel bundler](https://github.com/parcel-bundler/parcel) to build the project.
+```sh
+yarn global add parcel-bundler
+```
+
+You can then build it.
 ```sh
 yarn client:build
 ```
+
+Or check [Release build](#release-build)
 
 ## Configuration
 Copy [`.server.env.example`](`.server.env.example`) to `.server.env`.
@@ -27,6 +40,9 @@ Copy [`.server.env.example`](`.server.env.example`) to `.server.env`.
 ```sh
 yarn server:start
 ```
+
+## Screenshot
+![App screenshot](screenshot.jpg)
 
 ## License
 [The MIT License](./LICENSE).
