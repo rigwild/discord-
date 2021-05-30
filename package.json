@@ -18,7 +18,7 @@
     "dotenv-safe": "^8.2.0",
     "esm": "^3.2.25",
     "serve-handler": "^6.1.2",
-    "ws": "^7.2.1"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "vue": "^2.6.11"
